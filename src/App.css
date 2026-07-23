@@ -1,0 +1,64 @@
+/* App-level overrides — most styles live in index.css */
+
+/* Ping animation for map markers */
+@keyframes ping {
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Leaflet popup chrome */
+.leaflet-popup-content-wrapper {
+  border-radius: 16px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(99,102,241,0.15) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12) !important;
+  overflow: hidden;
+}
+.leaflet-popup-tip-container { display: none; }
+.leaflet-popup-content { margin: 0 !important; }
+.leaflet-container { font-family: 'Inter', system-ui, sans-serif !important; }
+
+/* Recharts legend text */
+.recharts-legend-item-text {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ── Overview tab responsive layout ── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.25rem;
+}
+
+/* Map card: fixed height on desktop */
+.map-card {
+  height: 500px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-card {
+    height: 420px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-card {
+    height: 320px;
+    min-height: 260px;
+  }
+  /* Ensure Leaflet fills its wrapper on mobile */
+  .leaflet-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
