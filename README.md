@@ -22,7 +22,7 @@
 
 ## ✨ Features
 
-| Feature | Description |
+| Feature | Description | 
 |---|---|
 | 🎯 **KPI Cards** | Animated counters for total participants, districts covered, top colleges & gender ratio |
 | 📊 **Interactive Charts** | Recharts-powered bar, pie & line charts with smooth transitions |
