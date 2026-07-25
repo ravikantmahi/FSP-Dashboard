@@ -3,12 +3,73 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADLUlEQVR4AWJwL/AhGjPM/87P2PUri6H+eQOIDRMXEQbUWg4wkoRREK7B2bZt27Ztm8HZtm3bwdm2bZtr9M67VJKe/OnsML1J2vhe1UM3LN6+wyegdfDaRFgtIzA9bDvByNckO8+rYFOBABJbGs8YhFmOq5ghH2LXmjgtpz1W3JgE2u2JkBf1Jg4nFIPfXwYwhOdSpkhhNdVSNXoAqTHgwiiqxOSA79wvNmm+3VQg1an7TuAMLRLzIpf4BaQ1VaRyoxYzEmRzpZI5swBlbeM+7sTkqCeYEnUWXU90oqV6MF4B+TIAE3KH5nqUM6JoJ1cqLQmStSaMygizzIoqo0MYTGDpSkm48Jw3wCFpQ3JcqyzZtlMpgCzGtrCujZyERaEPWDRsDf0aFRIUVL9u1ZB6JYdrteq1ZwAugXoxUB2hibZnukYoH2IweuOzD5kzKmPe1IAJJUjK1/kuFRtdlmotC3gsmqISPxdtRTFI9UMpBh+RhImc+Vl2NA7GnyqPdiuruLKMCqVWlatStVGYVG68l8fuFCYuGWCpQ4WYFvsJ86UCdSVc3A2H/QWKdqRCKVfTQSiV0qloc9jqNW4wh/lXoDNzuGUVrGEabK6q1i20eNUTur39M6SvFh1w6uy3eL9KwyD1ZQReP4M0DECP1NPCFntbuup6qqS9/bOka220lMSyVwPQ3tiHBMpvdHB8xwItAKW8AVLhu8KlPhOmVauxme+OLod2Z+UZgT8xUT4gWD7ikPxGFVc2L6yQNaXUqt5Ft5Mw2kmbVaDbgmDR3DmCUfIIwkXe4krYH+RzWaU1y7yilQrMKcLrwb1tvrW4vMAmHUqltNfYh9KrQG1pXuI+W4MwVQD3ffo8OT4gsxGqKqWdBHLSsEhUZapCn6EBTzFJnuOnEPoH+7VQ1NUVclqxmrk1uqQCfVf6GvfkGkQuQFhQ3vaqX0BWqfzDG/kIESr9jr4cELxm+j8N7aONEoHfhNJe5pFKTAVywhAmkTgngRACj+/BVDVXpgEZ/fKZaKTC9q/DeMKMPWwKkNX39CqmuVBm/o8wC0IiMZQKqUz9EzAdqA5vquRXQFXua4X/B7Hsl0/IgZViAAAAAElFTkSuQmCC" />
+
+  <!-- ─── Favicon ─── -->
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADLUlEQVR4AWJwL/AhGjPM/87P2PUri6H+eQOIDRMXEQbUWg4wkoRREK7B2bZt27Ztm8HZtm3bwdm2bZtr9M67VJKe/OnsML1J2vhe1UM3LN6+wyegdfDaRFgtIzA9bDvByNckO8+rYFOBABJbGs8YhFmOq5ghH2LXmjgtpz1W3JgE2u2JkBf1Jg4nFIPfXwYwhOdSpkhhNdVSNXoAqTHgwiiqxOSA79wvNmm+3VQg1an7TuAMLRLzIpf4BaQ1VaRyoxYzEmRzpZI5swBlbeM+7sTkqCeYEnUWXU90oqV6MF4B+TIAM3KH5nqUM6JoJ1cqLQmStSaMygizzIoqo0MYTGDpSkm48Jw3wCFpQ3JcqyzZtlMpgCzGtrCujZyERaEPWDRsDf0aFRIUVL9u1ZB6JYdrteq1ZwAugXoxUB2hibZnukYoH2IweuOzD5kzKmPe1IAJJUjK1/kuFRtdlmotC3gsmqISPxdtRTFI9UMpBh+RhImc+Vl2NA7GnyqPdiuruLKMCqVWlatStVGYVG68l8fuFCYuGWCpQ4WYFvsJ86UCdSVc3A2H/QWKdqRCKVfTQSiV0qloc9jqNW4wh/lXoDNzuGUVrGEabK6q1i20eNUTur39M6SvFh1w6uy3eL9KwyD1ZQReP4M0DECP1NPCFntbuup6qqS9/bOka220lMSyVwPQ3tiHBMpvdHB8xwItAKW8AVLhu8KlPhOmVauxme+OLod2Z+UZgT8xUT4gWD7ikPxGFVc2L6yQNaXUqt5Ft5Mw2kmbVaDbgmDR3DmCUfIIwkXe4krYH+RzWaU1y7yilQrMKcLrwb1tvrW4vMAmHUqltNfYh9KrQG1pXuI+W4MwVQD3ffo8OT4gsxGqKqWdBHLSsEhUZapCn6EBTzFJnuOnEPoH+7VQ1NUVclqxmrk1uqQCfVf6GvfkGkQuQFhQ3vaqX0BWqfzDG/kIESr9jr4cELxm+j8N7aONEoHfhNJe5pFKTAVywhAmkTgngRACj+/BVDVXpgEZ/fKZaKTC9q/DeMKMPWwKkNX39CqmuVBm/o8wC0IiMZQKqUz9EzAdqA5vquRXQFXua4X/B7Hsl0/IgZViAAAAAElFTkSuQmCC" />
+
+  <!-- ─── Viewport ─── -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FSP Training Dashboard — DTE Punjab</title>
-  <meta name="description"
-    content="Premium analytics dashboard for DTE Punjab's Future Skills Program training participants across Big Data and AR/VR courses." />
-  <!-- Google Fonts: Inter + Space Grotesk -->
+
+  <!-- ─── Primary SEO ─── -->
+  <title>FSP Training Dashboard — DTE Punjab | Future Skills Program Analytics</title>
+  <meta name="description" content="Interactive analytics dashboard for DTE Punjab's Future Skills Program (FSP). Explore training participants across Big Data and AR/VR courses, batch-wise insights, district maps, gender analytics, and faculty directory." />
+  <meta name="keywords" content="FSP Dashboard, DTE Punjab, Future Skills Program, Big Data training, AR VR training, Punjab polytechnic, training analytics, participant directory, district map, government training program" />
+  <meta name="author" content="Ravikant Mahi" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ravikantmahi.github.io/FSP-Dashboard/" />
+
+  <!-- ─── Open Graph / Facebook ─── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ravikantmahi.github.io/FSP-Dashboard/" />
+  <meta property="og:title" content="FSP Training Dashboard — DTE Punjab | Future Skills Program Analytics" />
+  <meta property="og:description" content="Interactive analytics dashboard for DTE Punjab's Future Skills Program. Explore Big Data & AR/VR training participants, district maps, gender analytics, and faculty directory." />
+  <meta property="og:image" content="https://ravikantmahi.github.io/FSP-Dashboard/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="FSP Training Dashboard" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://ravikantmahi.github.io/FSP-Dashboard/" />
+  <meta name="twitter:title" content="FSP Training Dashboard — DTE Punjab" />
+  <meta name="twitter:description" content="Interactive analytics dashboard for DTE Punjab's Future Skills Program — Big Data & AR/VR training insights across Punjab." />
+  <meta name="twitter:image" content="https://ravikantmahi.github.io/FSP-Dashboard/og-image.png" />
+  <meta name="twitter:creator" content="@ravikantmahi" />
+
+  <!-- ─── Structured Data (JSON-LD) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "FSP Training Dashboard",
+    "description": "Interactive analytics dashboard for DTE Punjab's Future Skills Program — tracking Big Data and AR/VR training participants across Punjab's government polytechnic colleges.",
+    "url": "https://ravikantmahi.github.io/FSP-Dashboard/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "author": {
+      "@type": "Person",
+      "name": "Ravikant Mahi",
+      "url": "https://github.com/ravikantmahi",
+      "sameAs": [
+        "https://www.linkedin.com/in/ravikantmahi/",
+        "https://www.instagram.com/ravikant.mahii",
+        "https://ravikantmahi.medium.com/"
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <!-- ─── Theme Color ─── -->
+  <meta name="theme-color" content="#6366f1" />
+  <meta name="msapplication-TileColor" content="#6366f1" />
+
+  <!-- ─── Google Fonts: Inter + Space Grotesk ─── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link

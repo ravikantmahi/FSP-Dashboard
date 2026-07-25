@@ -567,185 +567,185 @@ export default function Dashboard() {
         ══════════════════════════════════════════════ */}
         {activeTab === 'overview' && (
           <>
-          <div className="overview-grid fade-in">
-            {/* Left column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', minWidth: 0 }}>
+            <div className="overview-grid fade-in">
+              {/* Left column */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', minWidth: 0 }}>
 
-              {/* MAP */}
-              <div className="glass-card map-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ ...s.sectionTitle, marginBottom: '1rem' }}>
-                  <MapPin size={18} style={{ color: 'var(--accent)' }} />
-                  Geographic Distribution
-                  <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>
-                    {districtCounts.length} districts
-                  </span>
+                {/* MAP */}
+                <div className="glass-card map-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ ...s.sectionTitle, marginBottom: '1rem' }}>
+                    <MapPin size={18} style={{ color: 'var(--accent)' }} />
+                    Geographic Distribution
+                    <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>
+                      {districtCounts.length} districts
+                    </span>
+                  </div>
+                  <div style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', position: 'relative' }}>
+                    <MapContainer
+                      center={[31.1471, 75.3412]}
+                      zoom={8}
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+                    >
+                      <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
+                      {districtCounts.map((m, i) => (
+                        <Marker key={i} position={[m.lat, m.lng]} icon={createCustomIcon(m.count)}>
+                          <Popup>
+                            <div style={{ textAlign: 'center', padding: '0.5rem 0.75rem', minWidth: 130, fontFamily: 'var(--font-display)' }}>
+                              <p style={{ fontSize: 10, fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>{m.district}</p>
+                              <p style={{ fontSize: 32, fontWeight: 900, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1 }}>{m.count}</p>
+                              <p style={{ fontSize: 11, color: '#94a3b8', fontWeight: 600, marginTop: 2 }}>Participants</p>
+                            </div>
+                          </Popup>
+                        </Marker>
+                      ))}
+                    </MapContainer>
+                  </div>
                 </div>
-                <div style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', position: 'relative' }}>
-                  <MapContainer
-                    center={[31.1471, 75.3412]}
-                    zoom={8}
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-                  >
-                    <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
-                    {districtCounts.map((m, i) => (
-                      <Marker key={i} position={[m.lat, m.lng]} icon={createCustomIcon(m.count)}>
-                        <Popup>
-                          <div style={{ textAlign: 'center', padding: '0.5rem 0.75rem', minWidth: 130, fontFamily: 'var(--font-display)' }}>
-                            <p style={{ fontSize: 10, fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>{m.district}</p>
-                            <p style={{ fontSize: 32, fontWeight: 900, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1 }}>{m.count}</p>
-                            <p style={{ fontSize: 11, color: '#94a3b8', fontWeight: 600, marginTop: 2 }}>Participants</p>
-                          </div>
-                        </Popup>
-                      </Marker>
-                    ))}
-                  </MapContainer>
+
+                {/* Designation Bar Chart */}
+                <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem' }}>
+                  <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
+                    <Briefcase size={18} style={{ color: '#8b5cf6' }} /> Top Designations
+                  </div>
+                  <div style={{ height: 200 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={designationData} layout="vertical" margin={{ top: 0, right: 24, left: 0, bottom: 0 }}>
+                        <XAxis type="number" hide />
+                        <YAxis
+                          dataKey="name" type="category"
+                          axisLine={false} tickLine={false}
+                          tick={{ fill: 'var(--text-secondary)', fontSize: 12, fontWeight: 600, fontFamily: 'Inter' }}
+                          width={110}
+                        />
+                        <RechartsTooltip
+                          cursor={{ fill: 'rgba(99,102,241,0.05)' }}
+                          contentStyle={{ borderRadius: 12, border: '1px solid var(--border)', background: 'var(--bg-surface-solid)', fontFamily: 'Inter', boxShadow: 'var(--shadow-lg)' }}
+                        />
+                        <Bar dataKey="count" radius={[0, 8, 8, 0]} barSize={14}>
+                          {designationData.map((_, i) => (
+                            <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
                 </div>
               </div>
 
-              {/* Designation Bar Chart */}
-              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem' }}>
-                <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
-                  <Briefcase size={18} style={{ color: '#8b5cf6' }} /> Top Designations
+              {/* Right sidebar */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+
+                {/* Gender Donut */}
+                <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem' }}>
+                  <div style={{ ...s.sectionTitle, marginBottom: '0.75rem' }}>
+                    <Activity size={18} style={{ color: '#ec4899' }} /> Gender Split
+                  </div>
+                  <div style={{ height: 190 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={genderData} dataKey="value" nameKey="name"
+                          cx="50%" cy="50%"
+                          innerRadius={52} outerRadius={78}
+                          paddingAngle={4} stroke="none"
+                          labelLine={false}
+                          label={renderPieLabel}
+                        >
+                          {genderData.map((_, i) => (
+                            <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <RechartsTooltip
+                          contentStyle={{ borderRadius: 12, border: '1px solid var(--border)', background: 'var(--bg-surface-solid)', fontFamily: 'Inter', boxShadow: 'var(--shadow-lg)' }}
+                        />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  {/* Gender legend */}
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: 4 }}>
+                    {genderData.map((g, i) => (
+                      <div key={g.name} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                        <span style={{ width: 8, height: 8, borderRadius: '50%', background: CHART_COLORS[i], display: 'inline-block' }} />
+                        <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)' }}>{g.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div style={{ height: 200 }}>
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={designationData} layout="vertical" margin={{ top: 0, right: 24, left: 0, bottom: 0 }}>
-                      <XAxis type="number" hide />
-                      <YAxis
-                        dataKey="name" type="category"
-                        axisLine={false} tickLine={false}
-                        tick={{ fill: 'var(--text-secondary)', fontSize: 12, fontWeight: 600, fontFamily: 'Inter' }}
-                        width={110}
-                      />
-                      <RechartsTooltip
-                        cursor={{ fill: 'rgba(99,102,241,0.05)' }}
-                        contentStyle={{ borderRadius: 12, border: '1px solid var(--border)', background: 'var(--bg-surface-solid)', fontFamily: 'Inter', boxShadow: 'var(--shadow-lg)' }}
-                      />
-                      <Bar dataKey="count" radius={[0, 8, 8, 0]} barSize={14}>
-                        {designationData.map((_, i) => (
-                          <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
+
+                {/* District Leaderboard (NEW) */}
+                <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem', flex: 1 }}>
+                  <div style={{ ...s.sectionTitle, marginBottom: '1rem' }}>
+                    <Award size={18} style={{ color: '#f59e0b' }} /> District Ranking
+                  </div>
+                  <DistrictLeaderboard districtCounts={districtCounts} />
                 </div>
               </div>
             </div>
 
-            {/* Right sidebar */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {/* ── Insights (merged from Analytics) ── */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))', gap: '1.25rem', marginTop: '1.25rem' }}
+              className="fade-in">
 
-              {/* Gender Donut */}
-              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem' }}>
-                <div style={{ ...s.sectionTitle, marginBottom: '0.75rem' }}>
-                  <Activity size={18} style={{ color: '#ec4899' }} /> Gender Split
+              {/* Batch Breakdown */}
+              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
+                <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
+                  <Layers size={18} style={{ color: '#6366f1' }} /> Batch Breakdown
                 </div>
-                <div style={{ height: 190 }}>
+                <BatchBreakdown filteredData={filteredData} />
+              </div>
+
+              {/* Role Distribution Donut */}
+              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
+                <div style={{ ...s.sectionTitle, marginBottom: '0.75rem' }}>
+                  <Briefcase size={18} style={{ color: '#8b5cf6' }} /> Role Distribution
+                </div>
+                <div style={{ height: 260 }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
-                      <Pie
-                        data={genderData} dataKey="value" nameKey="name"
-                        cx="50%" cy="50%"
-                        innerRadius={52} outerRadius={78}
-                        paddingAngle={4} stroke="none"
-                        labelLine={false}
-                        label={renderPieLabel}
-                      >
-                        {genderData.map((_, i) => (
-                          <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
-                        ))}
+                      <Pie data={designationData} dataKey="count" nameKey="name"
+                        cx="50%" cy="50%" outerRadius={90} paddingAngle={3} stroke="none">
+                        {designationData.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
                       </Pie>
-                      <RechartsTooltip
-                        contentStyle={{ borderRadius: 12, border: '1px solid var(--border)', background: 'var(--bg-surface-solid)', fontFamily: 'Inter', boxShadow: 'var(--shadow-lg)' }}
-                      />
+                      <RechartsTooltip contentStyle={{ borderRadius: 12, border: '1px solid var(--border)', background: 'var(--bg-surface-solid)', fontFamily: 'Inter', boxShadow: 'var(--shadow-lg)' }} />
+                      <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11, fontWeight: 700, fontFamily: 'Inter', color: 'var(--text-secondary)' }} />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                {/* Gender legend */}
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: 4 }}>
-                  {genderData.map((g, i) => (
-                    <div key={g.name} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: CHART_COLORS[i], display: 'inline-block' }} />
-                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-secondary)' }}>{g.name}</span>
+              </div>
+
+              {/* Quick Insights */}
+              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
+                <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
+                  <TrendingUp size={18} style={{ color: '#10b981' }} /> Quick Insights
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {[
+                    { label: 'Total Participants', value: filteredData.length, color: '#6366f1', icon: Users },
+                    { label: 'Female Representation', value: `${femalePct}%`, color: '#ec4899', icon: UserCheck },
+                    { label: 'Unique Districts', value: districtCounts.length, color: '#10b981', icon: MapPin },
+                    { label: 'Unique Colleges', value: Object.keys(filteredData.reduce((a, c) => { if (c.college) a[c.college] = 1; return a; }, {})).length, color: '#f59e0b', icon: GraduationCap },
+                    { label: 'Unique Roles', value: Object.keys(filteredData.reduce((a, c) => { if (c.designation) a[c.designation] = 1; return a; }, {})).length, color: '#8b5cf6', icon: Briefcase },
+                  ].map(({ label, value, color, icon: Ic }) => (
+                    <div key={label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', borderRadius: 12, background: `${color}0d`, border: `1px solid ${color}22` }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                        <Ic size={15} style={{ color }} />
+                        <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)' }}>{label}</span>
+                      </div>
+                      <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 800, color }}>{value}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* District Leaderboard (NEW) */}
-              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.5rem', flex: 1 }}>
-                <div style={{ ...s.sectionTitle, marginBottom: '1rem' }}>
-                  <Award size={18} style={{ color: '#f59e0b' }} /> District Ranking
+              {/* Top 5 Colleges */}
+              <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
+                <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
+                  <BookOpen size={18} style={{ color: '#3b82f6' }} /> Top Colleges
                 </div>
-                <DistrictLeaderboard districtCounts={districtCounts} />
+                {topCollegesRows}
               </div>
+
             </div>
-          </div>
-
-          {/* ── Insights (merged from Analytics) ── */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))', gap: '1.25rem', marginTop: '1.25rem' }}
-            className="fade-in">
-
-            {/* Batch Breakdown */}
-            <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
-              <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
-                <Layers size={18} style={{ color: '#6366f1' }} /> Batch Breakdown
-              </div>
-              <BatchBreakdown filteredData={filteredData} />
-            </div>
-
-            {/* Role Distribution Donut */}
-            <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
-              <div style={{ ...s.sectionTitle, marginBottom: '0.75rem' }}>
-                <Briefcase size={18} style={{ color: '#8b5cf6' }} /> Role Distribution
-              </div>
-              <div style={{ height: 260 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie data={designationData} dataKey="count" nameKey="name"
-                      cx="50%" cy="50%" outerRadius={90} paddingAngle={3} stroke="none">
-                      {designationData.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
-                    </Pie>
-                    <RechartsTooltip contentStyle={{ borderRadius: 12, border: '1px solid var(--border)', background: 'var(--bg-surface-solid)', fontFamily: 'Inter', boxShadow: 'var(--shadow-lg)' }} />
-                    <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11, fontWeight: 700, fontFamily: 'Inter', color: 'var(--text-secondary)' }} />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            {/* Quick Insights */}
-            <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
-              <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
-                <TrendingUp size={18} style={{ color: '#10b981' }} /> Quick Insights
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {[
-                  { label: 'Total Participants', value: filteredData.length, color: '#6366f1', icon: Users },
-                  { label: 'Female Representation', value: `${femalePct}%`, color: '#ec4899', icon: UserCheck },
-                  { label: 'Unique Districts', value: districtCounts.length, color: '#10b981', icon: MapPin },
-                  { label: 'Unique Colleges', value: Object.keys(filteredData.reduce((a, c) => { if (c.college) a[c.college] = 1; return a; }, {})).length, color: '#f59e0b', icon: GraduationCap },
-                  { label: 'Unique Roles', value: Object.keys(filteredData.reduce((a, c) => { if (c.designation) a[c.designation] = 1; return a; }, {})).length, color: '#8b5cf6', icon: Briefcase },
-                ].map(({ label, value, color, icon: Ic }) => (
-                  <div key={label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', borderRadius: 12, background: `${color}0d`, border: `1px solid ${color}22` }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                      <Ic size={15} style={{ color }} />
-                      <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)' }}>{label}</span>
-                    </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 800, color }}>{value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Top 5 Colleges */}
-            <div className="glass-card" style={{ borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}>
-              <div style={{ ...s.sectionTitle, marginBottom: '1.25rem' }}>
-                <BookOpen size={18} style={{ color: '#3b82f6' }} /> Top Colleges
-              </div>
-              {topCollegesRows}
-            </div>
-
-          </div>
           </>
         )}
 
@@ -1164,7 +1164,7 @@ export default function Dashboard() {
                   {
                     initials: 'AB', name: 'Ms. Anita Budhiraja', role: 'Scientist-E / Program Chief Investigator', org: 'NIELIT Chandigarh',
                     spec: 'AI & Machine Learning', color: '#ec4899',
-                    desc: 'Scientist-E and Program Coordinator specialising in AI and Machine Learning research and training.',
+                    desc: 'Scientist-E and Program Chief Investigator, Specialising in AI and Machine Learning research and training.',
                     photo: 'https://raw.githubusercontent.com/nielitropar/computer-vision/refs/heads/main/assets/Anita%20Budhiraja%20Madam.jpg',
                     socials: [
                       { type: 'github', url: 'https://github.com/anitabudhiraja' },
@@ -1175,7 +1175,7 @@ export default function Dashboard() {
                   {
                     initials: 'SS', name: 'Dr. Sarwan Singh', role: 'Scientist-D / Co-Investigator', org: 'NIELIT Chandigarh',
                     spec: 'AI, AR/VR & Big Data', color: '#8b5cf6',
-                    desc: 'Co-Investigator for AR/VR and Big Data tracks, with deep expertise in AI and immersive technologies.',
+                    desc: 'Co-Investigator for AR/VR and Big Data, with expertise in AI/ML and Immersive technologies.',
                     photo: 'https://raw.githubusercontent.com/nielitropar/computer-vision/refs/heads/main/assets/Sarwan_Singh.JPG',
                     socials: [
                       { type: 'github', url: 'https://github.com/sarwansingh' },
@@ -1208,7 +1208,7 @@ export default function Dashboard() {
                   {
                     initials: 'MK', name: 'Ms. Manjinder Kaur', role: 'Assistant Project Engineer', org: 'NIELIT Chandigarh',
                     spec: 'AR/VR & Web Development', color: '#7c3aed',
-                    desc: 'Works on AR/VR and web application projects at NIELIT Chandigarh, supporting Unity and A-Frame training.',
+                    desc: 'Works on AR/VR and web application projects at NIELIT Chandigarh, supporting Unity and A-Frame Training.',
                     photo: 'https://media.licdn.com/dms/image/v2/D5635AQEpJHXI7r0_fg/profile-framedphoto-shrink_800_800/B56Z2F8mYLIUAg-/0/1776068749120?e=1785434400&v=beta&t=Qo9zRnWN9xHBnZma8kEFU4zaYN6TlA-mzMxv3itiWDk',
                     socials: [
                       { type: 'github', url: 'https://github.com/manjinderkaurrai' },
@@ -1218,8 +1218,8 @@ export default function Dashboard() {
                   },
                   {
                     initials: 'RK', name: 'Mr. Ravi Kant', role: 'Project Assistant', org: 'NIELIT Chandigarh',
-                    spec: 'Big Data, Web Dev & Design', color: '#f59e0b',
-                    desc: 'Combines expertise in Big Data, Data Science, Web Development, and Graphic Design for comprehensive BDDS training.',
+                    spec: 'Big Data, Web Development', color: '#f59e0b',
+                    desc: 'Expertise in Big Data & Data Science, Web Development & Graphic Design, and supporting BDDS FSP Training.',
                     photo: 'https://raw.githubusercontent.com/nielitropar/computer-vision/refs/heads/main/assets/ravi%20kant%20nielit.jpg',
                     socials: [
                       { type: 'github', url: 'https://github.com/ravikantmahi' },
