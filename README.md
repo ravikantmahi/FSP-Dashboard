@@ -4,7 +4,7 @@
 
 ### _Future Skills Program · Directorate of Technical Education, Punjab_
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-6366f1?style=for-the-badge&logoColor=white)](https://ravikantmahi.github.io/FSP-Dashboard/)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-6366f1?style=for-the-badge&logoColor=white)](https://fsp-dashboard-nine.vercel.app/)
 [![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite_8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
@@ -12,7 +12,7 @@
 
 <br />
 
-> An interactive, real-time analytics dashboard built for DTE Punjab's **Future Skills Program (FSP)** — tracking training participants across **Big Data** and **AR/VR** courses offered in government polytechnic colleges across Punjab.
+> An interactive, real-time analytics dashboard built for DTE Punjab's **Future Skills Program (FSP)** — tracking training participants across **Big Data** and **AR/VR** courses offered in government  School and colleges across Punjab.
 
 <br />
 
@@ -82,31 +82,6 @@ FSP DashBoard/
 - **Node.js** ≥ 18.x
 - **npm** ≥ 9.x (or pnpm / yarn)
 
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/ravikantmahi/FSP-Dashboard.git
-
-# 2. Navigate into the project
-cd FSP-Dashboard
-
-# 3. Install dependencies
-npm install
-
-# 4. Start the development server
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser. 🎉
-
-### Build for Production
-
-```bash
-npm run build        # outputs to /dist
-npm run preview      # locally preview the production build
-```
-
 ---
 
 ## 📊 Dashboard Sections
@@ -167,24 +142,7 @@ The `index.html` includes:
 
 ## 📡 Data Schema
 
-Participant records are stored in `src/data/participants.json`. Each entry contains:
-
-```json
-{
-  "course":      "Big Data",
-  "batch":       "Batch 1",
-  "name":        "Harpreet Kaur",
-  "gender":      "Female",
-  "email":       "example@gmail.com",
-  "designation": "Senior Lecturer",
-  "college":     "Government Polytechnic College, Bhikhiwind",
-  "district":    "Tarn Taran",
-  "lat":         31.2723,
-  "lng":         74.9351
-}
-```
-
-> **Privacy Note**: All participant data is used exclusively for internal reporting and training program management by DTE Punjab.
+Participant records are stored in `src/data/participants.json`.
 
 ---
 
@@ -225,7 +183,7 @@ _Full-Stack Developer · Data Enthusiast_
 
 <div align="center">
 
-Made with ❤️ for **DTE Punjab** · © 2025 Ravikant Mahi
+Made with ❤️ for **FSP ** · © 2025 Ravikant Mahi
 
 _If you found this project useful, please ⭐ star the repository!_
 
