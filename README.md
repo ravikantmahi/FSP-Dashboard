@@ -183,7 +183,7 @@ _Full-Stack Developer · Data Enthusiast_
 
 <div align="center">
 
-Made with ❤️ for **FSP ** · © 2025 Ravikant Mahi
+Made with ❤️ for **FSP** · © 2025 Ravikant Mahi
 
 _If you found this project useful, please ⭐ star the repository!_
 
