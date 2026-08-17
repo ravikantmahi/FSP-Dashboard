@@ -877,17 +877,17 @@ export default function Dashboard() {
               padding: 'clamp(2rem,5vw,3.5rem)',
               position: 'relative', overflow: 'hidden',
             }}>
-              
+
               {/* Decorative blobs */}
               <div style={{ position: 'absolute', top: -60, right: -60, width: 220, height: 220, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', bottom: -40, left: -40, width: 160, height: 160, borderRadius: '50%', background: 'rgba(255,255,255,0.04)', pointerEvents: 'none' }} />
 
               <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '2rem' }}>
-                
+
                 {/* Logos Section */}
-                <div className="logos-section" style={{ 
+                <div className="logos-section" style={{
                   display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', justifyContent: 'center',
-                  background: '#ffffff', padding: '1.25rem 2rem', 
+                  background: '#ffffff', padding: '1.25rem 2rem',
                   borderRadius: 'var(--radius-lg)', boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
                   width: 'fit-content', maxWidth: '100%'
                 }}>
@@ -1241,7 +1241,7 @@ export default function Dashboard() {
                     socials: [
                       { type: 'github', url: 'https://github.com/manjinderkaurrai' },
                       { type: 'linkedin', url: 'https://www.linkedin.com/in/immanjinderkaur/' },
-                      { type: 'website', url: 'https://manjinderkaurrai.github.io/' },
+                      { type: 'website', url: 'https://demo-virid-ten-15.vercel.app/' },
                     ]
                   },
                   {
@@ -1252,7 +1252,7 @@ export default function Dashboard() {
                     socials: [
                       { type: 'github', url: 'https://github.com/ravikantmahi' },
                       { type: 'linkedin', url: 'https://www.linkedin.com/in/ravikantmahi/' },
-                      { type: 'website', url: 'https://ravikant-mahi.vercel.app/' },
+                      { type: 'website', url: 'https://ravikantmahi-portfolio.vercel.app/' },
                     ]
                   },
                 ].map((f, i) => (
