@@ -15,6 +15,9 @@ import {
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 import trainingData from './data/participants.json';
+import cdacLogo from './assets/CDAC_Log.jpg';
+import nielitLogo from './assets/NIELIT_Logo.jpg';
+import fspLogo from './assets/fsp_logo.png';
 
 /* ── Inline SVG social icons (version-safe) ── */
 const GithubIcon = ({ size = 14 }) => (
@@ -874,38 +877,56 @@ export default function Dashboard() {
               padding: 'clamp(2rem,5vw,3.5rem)',
               position: 'relative', overflow: 'hidden',
             }}>
+              
               {/* Decorative blobs */}
               <div style={{ position: 'absolute', top: -60, right: -60, width: 220, height: 220, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', bottom: -40, left: -40, width: 160, height: 160, borderRadius: '50%', background: 'rgba(255,255,255,0.04)', pointerEvents: 'none' }} />
 
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>MeitY Initiative</span>
-                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
-                  <span style={{ fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>NIELIT Chandigarh</span>
+              <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '2rem' }}>
+                
+                {/* Logos Section */}
+                <div style={{ 
+                  display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', justifyContent: 'center',
+                  background: '#ffffff', padding: '1.25rem 2rem', 
+                  borderRadius: 'var(--radius-lg)', boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+                  width: 'fit-content', maxWidth: '100%'
+                }}>
+                  <img src={nielitLogo} alt="NIELIT Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
+                  <img src={fspLogo} alt="FutureSkills PRIME Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
+                  <img src={cdacLogo} alt="C-DAC Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
                 </div>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem,4vw,3rem)', fontWeight: 900, color: '#fff', letterSpacing: '-0.04em', marginBottom: 10, lineHeight: 1.1 }}>
-                  FutureSkills PRIME
-                </h2>
-                <p style={{ fontSize: 'clamp(0.9rem,2vw,1.1rem)', color: 'rgba(255,255,255,0.82)', fontWeight: 500, marginBottom: 24, maxWidth: 600 }}>
-                  Bridging the Industry Skill Gap &nbsp;•&nbsp; NIELIT Chandigarh
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                  {[
-                    { icon: Clock, label: '1 Week • 5 Days' },
-                    { icon: Zap, label: '6 Hours Daily' },
-                    { icon: DollarSign, label: 'Free for Eligible' },
-                  ].map(({ icon: Ic, label }) => (
-                    <span key={label} style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 6,
-                      background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(255,255,255,0.22)',
-                      borderRadius: 99, padding: '6px 16px',
-                      fontSize: 13, fontWeight: 700, color: '#fff',
-                    }}>
-                      <Ic size={13} /> {label}
-                    </span>
-                  ))}
+
+                {/* Text Section */}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>MeitY Initiative</span>
+                    <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+                    <span style={{ fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>NIELIT Chandigarh</span>
+                  </div>
+                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem,4vw,3rem)', fontWeight: 900, color: '#fff', letterSpacing: '-0.04em', marginBottom: 10, lineHeight: 1.1 }}>
+                    FutureSkills PRIME
+                  </h2>
+                  <p style={{ fontSize: 'clamp(0.9rem,2vw,1.1rem)', color: 'rgba(255,255,255,0.82)', fontWeight: 500, marginBottom: 24, maxWidth: 600 }}>
+                    Bridging the Industry Skill Gap &nbsp;•&nbsp; NIELIT Chandigarh
+                  </p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem' }}>
+                    {[
+                      { icon: Clock, label: '1 Week • 5 Days' },
+                      { icon: Zap, label: '6 Hours Daily' },
+                      { icon: DollarSign, label: 'Free for Eligible' },
+                    ].map(({ icon: Ic, label }) => (
+                      <span key={label} style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 6,
+                        background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(255,255,255,0.22)',
+                        borderRadius: 99, padding: '6px 16px',
+                        fontSize: 13, fontWeight: 700, color: '#fff',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        <Ic size={13} /> {label}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -1306,8 +1327,11 @@ export default function Dashboard() {
         )}
 
         {/* Footer */}
-        <footer style={{ textAlign: 'center', padding: '2rem 0 1.5rem', fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
-          © {new Date().getFullYear()} Raviknat mahi · FSP Training Dashboard · DTE Punjab
+        <footer>
+
+          <div className="text-center" style={{ paddingTop: '1.5rem', width: '100%', fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
+            © {new Date().getFullYear()} Ravikant Mahi · FSP Training Dashboard · DTE Punjab
+          </div>
         </footer>
       </div>
     </div>
