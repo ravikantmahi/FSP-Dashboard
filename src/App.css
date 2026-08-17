@@ -129,6 +129,11 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 }
 .custom-map-marker { background: transparent !important; border: 0 !important; }
 
+.brand-logo {
+  height: clamp(40px, 6vw, 65px);
+  object-fit: contain;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -181,6 +186,9 @@ button:focus-visible, a:focus-visible, input:focus-visible {
   .fsp-logo {
     grid-column: 1 / -1;
     justify-self: center;
+  }
+  .brand-logo {
+    height: 70px !important;
   }
 }
 @media (prefers-reduced-motion: reduce) {

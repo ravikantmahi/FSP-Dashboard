@@ -891,9 +891,9 @@ export default function Dashboard() {
                   borderRadius: 'var(--radius-lg)', boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
                   width: 'fit-content', maxWidth: '100%'
                 }}>
-                  <img src={nielitLogo} alt="NIELIT Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
-                  <img src={cdacLogo} alt="C-DAC Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
-                  <img src={fspLogo} alt="FutureSkills PRIME Logo" className="fsp-logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
+                  <img src={nielitLogo} alt="NIELIT Logo" className="brand-logo" />
+                  <img src={cdacLogo} alt="C-DAC Logo" className="brand-logo" />
+                  <img src={fspLogo} alt="FutureSkills PRIME Logo" className="brand-logo fsp-logo" />
                 </div>
 
                 {/* Text Section */}
