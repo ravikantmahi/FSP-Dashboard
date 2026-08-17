@@ -885,15 +885,15 @@ export default function Dashboard() {
               <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '2rem' }}>
                 
                 {/* Logos Section */}
-                <div style={{ 
+                <div className="logos-section" style={{ 
                   display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', justifyContent: 'center',
                   background: '#ffffff', padding: '1.25rem 2rem', 
                   borderRadius: 'var(--radius-lg)', boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
                   width: 'fit-content', maxWidth: '100%'
                 }}>
                   <img src={nielitLogo} alt="NIELIT Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
-                  <img src={fspLogo} alt="FutureSkills PRIME Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
                   <img src={cdacLogo} alt="C-DAC Logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
+                  <img src={fspLogo} alt="FutureSkills PRIME Logo" className="fsp-logo" style={{ height: 'clamp(35px, 5vw, 55px)', objectFit: 'contain' }} />
                 </div>
 
                 {/* Text Section */}
@@ -1329,7 +1329,7 @@ export default function Dashboard() {
         {/* Footer */}
         <footer>
 
-          <div className="text-center" style={{ paddingTop: '1.5rem', width: '100%', fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
+          <div style={{ textAlign: "center", paddingTop: '1.5rem', width: '100%', fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
             © {new Date().getFullYear()} Ravikant Mahi · FSP Training Dashboard · DTE Punjab
           </div>
         </footer>

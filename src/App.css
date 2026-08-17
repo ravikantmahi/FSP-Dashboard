@@ -171,6 +171,17 @@ button:focus-visible, a:focus-visible, input:focus-visible {
   .dash-content > header > div:last-child > div:first-child { display: none !important; }
   .map-card { min-height: 320px; }
   table { min-width: 760px; }
+  
+  .logos-section {
+    display: grid !important;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 1.5rem !important;
+  }
+  .fsp-logo {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
