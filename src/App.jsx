@@ -261,7 +261,14 @@ export default function Dashboard() {
   /* ── 1. Course + Batch filter ── */
   const filteredData = useMemo(() =>
     trainingData.filter(item => {
-      const matchCourse = item.course === activeCourse;
+      let matchCourse = false;
+      if (activeCourse === 'Big Data') {
+        matchCourse = item.course === 'Big  Data & Data Science' || item.course === 'Big Data' || item.course === 'Big Data & Data Science';
+      } else if (activeCourse === 'ARVR') {
+        matchCourse = item.course === 'Augmented Reality and Virtual Reality' || item.course === 'ARVR';
+      } else {
+        matchCourse = item.course === activeCourse;
+      }
       const matchBatch = activeBatch === 'All' || item.batch === activeBatch;
       return matchCourse && matchBatch;
     }), [activeCourse, activeBatch]);
@@ -1209,7 +1216,7 @@ export default function Dashboard() {
                     initials: 'MK', name: 'Ms. Manjinder Kaur', role: 'Assistant Project Engineer', org: 'NIELIT Chandigarh',
                     spec: 'AR/VR & Web Development', color: '#7c3aed',
                     desc: 'Works on AR/VR and web application projects at NIELIT Chandigarh, supporting Unity and A-Frame Training.',
-                    photo: 'https://media.licdn.com/dms/image/v2/D5635AQEpJHXI7r0_fg/profile-framedphoto-shrink_800_800/B56Z2F8mYLIUAg-/0/1776068749120?e=1785434400&v=beta&t=Qo9zRnWN9xHBnZma8kEFU4zaYN6TlA-mzMxv3itiWDk',
+                    photo: 'https://media.licdn.com/dms/image/v2/D5635AQHUfdr87EuYNw/profile-framedphoto-shrink_800_800/B56Z_gaSiqJsAc-/0/1786176416610?e=1787562000&v=beta&t=RbLRAnCyn1pLVTFi_bg0cVXR5hx1mkORdVgVr4u4FkM',
                     socials: [
                       { type: 'github', url: 'https://github.com/manjinderkaurrai' },
                       { type: 'linkedin', url: 'https://www.linkedin.com/in/immanjinderkaur/' },
